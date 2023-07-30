@@ -1,0 +1,62 @@
+import pandas as pd
+
+# Import the dataset
+url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user'
+users = pd.read_csv(url, sep='|', index_col='user_id')
+
+# Display first 10 and last 10 entries
+print("--------First 10 entries-------")
+print(users.head(10))
+print("--------Last 10 entries-------")
+print(users.tail(10))
+
+# Number of observations
+num_observations = users.shape[0]
+print("Number of Observations:", num_observations)
+
+# Number of columns
+num_columns = users.shape[1]
+print("Number of Columns:", num_columns)
+
+# Name of all columns
+print("Columns:", users.columns)
+
+# Dataset indexing
+print("Dataset Index:", users.index)
+
+# Data type of each column
+print("Data Types:")
+print(users.dtypes)
+
+# Print only the 'occupation' column
+print("Occupation Column:")
+print(users['occupation'])
+
+# Number of different occupations
+num_occupations = users['occupation'].nunique()
+print("Number of Different Occupations:", num_occupations)
+
+# Most frequent occupation
+most_frequent_occupation = users['occupation'].value_counts().idxmax()
+print("Most Frequent Occupation:", most_frequent_occupation)
+
+# DataFrame info
+print("DataFrame Info:")
+print(users.info())
+
+# Describe all columns
+print("Describe All Columns:")
+print(users.describe())
+
+# Summarize only the 'occupation' column
+occupation_summary = users['occupation'].value_counts()
+print("Occupation Summary:")
+print(occupation_summary)
+
+# Mean age of users
+mean_age = users['age'].mean()
+print("Mean Age of Users:", mean_age)
+
+# Age with the least occurrence
+age_least_occurrence = users['age'].value_counts().idxmin()
+print("Age with Least Occurrence:", age_least_occurrence)
